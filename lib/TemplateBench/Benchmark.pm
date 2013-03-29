@@ -1,5 +1,7 @@
 package TemplateBench::Benchmark;
+
 use Mojo::Base 'Mojolicious::Controller';
+use TemplateBench::Model::Steps;
 
 my $message = 'Welcome to the Mojolicious real-time web framework!';
 
@@ -8,7 +10,9 @@ sub welcome {
   my $self = shift;
 
   # Render template "example/welcome.html.ep" with message
-  $self->render( message => 'Welcome to the Mojolicious real-time web framework!');
+  $self->render( 
+      steps => TemplateBench::Model::Steps->new()
+  );
 }
 
 sub mojotemplate {
@@ -34,6 +38,10 @@ sub mason {
 sub htp {
   my $self = shift;
   $self->render( message => $message );
+}
+
+sub steps {
+  my $self = shift;
 }
 
 1;

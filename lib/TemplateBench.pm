@@ -26,7 +26,8 @@ sub startup {
 
     # Router
     my $r = $self->routes;
-    $r = $r->route('/template-bench');
+
+    $self->log->debug($self->dumper($self->static->paths));
 
     # Normal route to controller
     $r->get('/')->to('benchmark#welcome');

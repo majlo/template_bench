@@ -12,3 +12,79 @@
         <tr><td><a href="<%= url_for('ht') %>">HTML::Template::Pro</a></td></tr>
     </tbody>
 </table>
+
+<% content_for script => begin %>
+    <script type="text/html" id="steps">
+        <h1>Steps</h1>
+
+        <div class="row-fluid steps">
+        <% for(my $i = 0; $i < scalar(@{$steps->groups}); $i++) { %>
+            <% if ( $i && ( $i % 2 ) ==  0 ) { %>
+                </div>
+                <div class="row-fluid steps">
+            <% } %>
+                <div class="span6">
+                    <h2><%= $steps->groups->[$i]->{title} %></h2>
+                    <% if ( exists($steps->groups->[$i]->{description}) ) { %><h3><%= $steps->groups->[$i]->{description} %></h3><% } %>
+                    <ul>
+                    <% for my $step (@{$steps->groups->[$i]->{steps}}) { %>
+                        <li><input type="<%= $step->{type} %>" name="<%= $step->{name} %>" id="<%= $step->{name} %>"><label for="<%= $step->{name} %>"><%= $step->{label} %></label></li>
+                    <% } %>
+                    </ul>
+                </div>
+        <% } %>
+        </div>
+    </script>
+<% end %>
+
+<% content_for script => begin %>
+    <script type="text/html" id="links">
+        <h1>Links</h1>
+        <div class="row-fluid">
+            <div class="span3">
+                <h2>OA Instances</h2>
+                <ul>
+                    <li><a href="http://nvolf-work.corp.netledger.com/index.pl?account_nickname=rsi_test;user_nickname=petek;password=petek;_namespace=default">Local</a></li>
+                    <li><a href="https://qa.openair1.com/index.pl">QA Trunk</a></li>
+                    <li><a href="https://qa.openair1.com:1443/index.pl">QA Release</a></li>
+                    <li><a href="https://qa.openair1.com:3443/index.pl">QA UI</a></li>
+                    <li><a href="http://www.openair.com/index.pl">Release</a></li>
+                </ul>
+            </div>
+            <div class="span3">
+                <h2>UI</h2>
+                <ul>
+                    <li><a href="https://confluence.corp.netsuite.com/display/TeamOA/OA+UI+Team+Daily+Brief">OA UI Team Daily Brief page</a></li>
+                    <li><a href="https://confluence.corp.netsuite.com/pages/viewpage.action?pageId=8232622">OA UI Technicall page</a></li>
+                    <li><a href="https://confluence.corp.netsuite.com/display/TeamOA/UI+Graphic+Rules">UI Graphic Rules</a></li>
+                </ul>
+            </div>
+            <div class="span3">
+                <h2>Tech</h2>
+                <ul>
+                    <li><a href="https://confluence.corp.netsuite.com/display/TeamOA/How+to+work+with+central+git+repository+linked+to+CVS">How to work with central git repository linked to CVS</a></li>
+                    <li><a href="https://confluence.corp.netsuite.com/display/TeamOA/Ignore+changes+in+GIT+project">Ignore changes in GIT project</a></li>
+                    <li><a href="https://confluence.corp.netsuite.com/display/TeamOA/Git+bisect+how+to">How to use bisect</a></li>
+                    <li><a href="https://confluence.corp.netsuite.com/display/~nvolf/Grunt" rel="nofollow">Grunt</a></li>
+                </ul>
+            </div>
+            <div class="span3">
+                <h2>Meetings</h2>
+                <ul>
+                    <li><a href="https://openair.webex.com/openair/j.php?ED=213985432&UID=0&PW=NY2NjNmVhMWEw&RT=MiMxMQ%3D%3D">Daily UI Meeting</a></li>
+                    <li><a href="https://netsuite.webex.com/netsuite/j.php?ED=197830422&UID=504046977&PW=NNGNiMTM3ZmI4&RT=MiMyNQ%3D%3D">Weekly UI Meeting</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span3">
+                <h2>Tools</h2>
+                <ul>
+                    <li><a href="https://cvs.openair1.com/codestriker">Codestriker</a></li>
+                    <li><a href="http://www.netsuite.com/">Netsuite</a></li>
+                </ul>
+            </div>
+        </div>
+    </script>
+
+<% end %>
