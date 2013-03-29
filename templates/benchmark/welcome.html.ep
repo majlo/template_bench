@@ -1,0 +1,14 @@
+% layout 'default';
+% title 'Templates';
+<h1>Templates Benchmark</h1>
+<table>
+    <thead>
+    </thead>
+    <tbody>
+        <tr><td><a href="<%= url_for('ep') %>">Mojo::Template</a></td></tr>
+        <tr><td><a href="<%= url_for('tt') %>">Template::Toolkit</a></td></tr>
+        <tr><td><a href="<%= url_for('tx') %>">Text::Xslate</a></td></tr>
+        <tr><td><a href="<%= url_for('mo') %>">HTML::Mason</a></td></tr>
+        <tr><td><a href="<%= url_for('ht') %>">HTML::Template::Pro</a></td></tr>
+    </tbody>
+</table>
