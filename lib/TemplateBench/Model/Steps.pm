@@ -2,6 +2,7 @@ package TemplateBench::Model::Steps;
 use Mojo::Base '-base';
 
 has groups => sub {
+    my $step_db = DB::Issue->load(100000);
     my $steps = [
         {
             title => "Code review",
@@ -9,8 +10,8 @@ has groups => sub {
                 {type => "checkbox", name => "go_through", label => 'go through all files of review'},
                 {type => "checkbox", name => "search", label => 'search for debugging symbols: <pre>$DB::single = 1;</pre> and <pre>console.log();</pre>'},
                 {type => "checkbox", name => "leave", label => 'leave at least one comment on code: <pre>"Looks good"</pre>'},
-                {type => "checkbox", name => "mark_codestriker", label => 'mark code as reviewed in CodeStriker'},
-                {type => "checkbox", name => "mark_netsuite", label => 'mark code as reviewed in NetSuite'},
+                {type => "checkbox", name => "mark_codestriker", checked => "checked", label => 'mark code as reviewed in CodeStriker'},
+                {type => "checkbox", name => "mark_netsuite", checked => $step_db->{mark_netsuite}, label => 'mark code as reviewed in NetSuite'},
                 {type => "checkbox", name => "test", label => 'inform author about closed review to switch issue to QA testing state'},
             ],
         },

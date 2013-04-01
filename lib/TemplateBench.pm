@@ -2,6 +2,11 @@ package TemplateBench;
 use Mojo::Base 'Mojolicious';
 use MojoX::Renderer::HTP;
 use MojoX::Renderer::Xslate;
+use ORLite {
+    file => 'db/templatebench.db',
+    package => 'DB',
+    unicode => 1,
+};
 
 # This method will run once at server start
 sub startup {
