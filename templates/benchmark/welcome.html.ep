@@ -28,7 +28,7 @@
                 <% if ( exists($steps->groups->[$i]->{description}) ) { %><h3><%= $steps->groups->[$i]->{description} %></h3><% } %>
                 <ul>
                 <% for my $step (@{$steps->groups->[$i]->{steps}}) { %>
-                    <li><input type="<%= $step->{type} %>" name="<%= $step->{name} %>" id="<%= $step->{name} %>"><label for="<%= $step->{name} %>"><%= $step->{label} %></label></li>
+                        <li><input type="<%= $step->{type} %>" name="<%= $step->{name} %>" id="<%= $step->{name} %>" <%= $step->{checked} ? 'checked="checked"' : "" %>><label for="<%= $step->{name} %>"><%= $step->{label} %></label></li>
                 <% } %>
                 </ul>
             </div>

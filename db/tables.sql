@@ -87,31 +87,31 @@ CREATE TABLE step (
 );
 CREATE UNIQUE INDEX i_step_group_name ON step(group_id, name);
 
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'go_through', 'go through all files of review', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'search', 'search for debugging symbols: <pre>$DB::single = 1;</pre> and <pre>console.log();</pre>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'leave', 'leave at least one comment on code: <pre>"Looks good"</pre>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'mark_codestriker', 'mark code as reviewed in CodeStriker', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'mark_netsuite', 'mark code as reviewed in NetSuite', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'test', 'inform author about closed review to switch issue to QA testing state', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'tidy_perl_code', 'Check perl code <pre>make check && make tidy</pre>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'check_js_code', 'Check javascript code <pre>grunt</pre>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'create_diff', 'Create diff <pre>git diff trunk</pre>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'upload_diff', 'Upload diff to <a href="https://cvs.openair1.com/codestriker">codestriker</a> and wait to code review', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'apply_diff', 'Apply diff to CVS <pre>git cvsexportcommit -v -P -w ../tb.trunk trunk branch/enh</pre>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'cvs_commit', 'Commit to CVS <pre>cvs commit -F .msg "Page.pm"</pre>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'mark_codestriker_commited', 'Mark reivew commited in  <a href="https://cvs.openair1.com/codestriker">codestriker</a>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'set_issue_qa_testing', 'Set status of issue to QA testing in <a href="http://www.netsuite.com/">NetSuite</a>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'releasebranch', 'be sure that your code is built on current release branch (not trunk)', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'precommit', 'dont commit code before QA check', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'date', 'check issue release date in NetSuite - if missing, ask James Samspon to add one', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'patch', 'prepare unified patch with <pre>diff -uN</pre>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'reviewed', 'let someone review your code', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'patchqa', 'patch qa:1443 server with your patch <pre>ssh www-release@qa.openair1.com</pre> (leave patch on server for possible revert)', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'patchemail', 'sent an email about patching with instructions, how to revert your patch', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'qastatus', 'switch issue status in NetSuite system to QA-cell and add comment about patched sever', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'qacomplete', 'after positive QA response - update docs/delta.html with release date, patch instructions and issue info in actual hot fix release section', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'hotfixcommit', 'commit your changes to release branch including delta docs entry <pre>commit -m "IS:xxxxxx [issue description]" [files] ../docs/delta.html</pre>', 1);
-INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'efixcommit', 'store all changes in patches until E-Fix release date (commit all changes together to resease branch in the day of release of E-Fix - this will prevent conflicting commits from Hot-Fixes)', 1);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'go_through', 'go through all files of review', 10);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'search', 'search for debugging symbols: <pre>$DB::single = 1;</pre> and <pre>console.log();</pre>', 20);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'leave', 'leave at least one comment on code: <pre>"Looks good"</pre>', 30);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'mark_codestriker', 'mark code as reviewed in CodeStriker', 40);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'mark_netsuite', 'mark code as reviewed in NetSuite', 50);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 1, 1, 'test', 'inform author about closed review to switch issue to QA testing state', 60);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'tidy_perl_code', 'Check perl code <pre>make check && make tidy</pre>', 10);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'check_js_code', 'Check javascript code <pre>grunt</pre>', 20);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'create_diff', 'Create diff <pre>git diff trunk</pre>', 30);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'upload_diff', 'Upload diff to <a href="https://cvs.openair1.com/codestriker">codestriker</a> and wait to code review', 40);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'apply_diff', 'Apply diff to CVS <pre>git cvsexportcommit -v -P -w ../tb.trunk trunk branch/enh</pre>', 50);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'cvs_commit', 'Commit to CVS <pre>cvs commit -F .msg "Page.pm"</pre>', 60);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'mark_codestriker_commited', 'Mark reivew commited in  <a href="https://cvs.openair1.com/codestriker">codestriker</a>', 70);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 2, 1, 'set_issue_qa_testing', 'Set status of issue to QA testing in <a href="http://www.netsuite.com/">NetSuite</a>', 80);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'releasebranch', 'be sure that your code is built on current release branch (not trunk)', 10);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'precommit', 'dont commit code before QA check', 20);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'date', 'check issue release date in NetSuite - if missing, ask James Samspon to add one', 30);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'patch', 'prepare unified patch with <pre>diff -uN</pre>', 40);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'reviewed', 'let someone review your code', 50);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'patchqa', 'patch qa:1443 server with your patch <pre>ssh www-release@qa.openair1.com</pre> (leave patch on server for possible revert)', 60);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'patchemail', 'sent an email about patching with instructions, how to revert your patch', 70);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'qastatus', 'switch issue status in NetSuite system to QA-cell and add comment about patched sever', 80);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'qacomplete', 'after positive QA response - update docs/delta.html with release date, patch instructions and issue info in actual hot fix release section', 90);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'hotfixcommit', 'commit your changes to release branch including delta docs entry <pre>commit -m "IS:xxxxxx [issue description]" [files] ../docs/delta.html</pre>', 100);
+INSERT INTO step(id, group_id, type_id, name, label, weight) VALUES (null, 3, 1, 'efixcommit', 'store all changes in patches until E-Fix release date (commit all changes together to resease branch in the day of release of E-Fix - this will prevent conflicting commits from Hot-Fixes)', 110);
 -- TABLE "step" BEGIN --
 
 -- TABLE "step_status" BEGIN --

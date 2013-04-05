@@ -2,6 +2,7 @@ package TemplateBench;
 use Mojo::Base 'Mojolicious';
 use MojoX::Renderer::HTP;
 use MojoX::Renderer::Xslate;
+use ORLite::Pod;
 use ORLite {
     file => 'db/templatebench.db',
     package => 'DB',
@@ -11,6 +12,13 @@ use ORLite {
 # This method will run once at server start
 sub startup {
     my $self = shift;
+
+    DB->do("PRAGMA foreign_keys = ON;");
+    my $generator = ORLite::Pod->new(
+        from => 'DB',
+        to => 'db/lib',
+    );
+    $generator->run;
 
     # Documentation browser under "/perldoc"
     $self->plugin('PODRenderer');
